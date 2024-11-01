@@ -5,12 +5,12 @@ metadata:
 data:
   default.conf: |
     upstream httpd_upstream {
-      sever httpd-service:80;
+      server httpd-service:80;
     }
 
     server {
       listen 80;
       location / {
-        proxy_pass http://httpd_upstram;
+        proxy_pass http://httpd_upstream;
       }
     }
