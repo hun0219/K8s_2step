@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: http-deployment
+  name: nginx-deployment
 spec:
   selector:
     matchLabels:
-      app: httpd
-  replicas: 2 # tells deployment to run 2 pods matching the template
+      app: nginx
+  replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: httpd
+        app: nginx
     spec:
       containers:
-      - name: httpd
-        image: httpd
+      - name: nginx
+        image: nginx
         ports:
         - containerPort: 80
 
@@ -22,12 +22,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: httpd-service
+  name: nginx-service
 spec:
   selector:
-    app: httpd
+    app: nginx
   ports:
   - protocol: TCP
     port: 80
     targetPort: 80
-  type: ClusterIP
+  type: NodePort
