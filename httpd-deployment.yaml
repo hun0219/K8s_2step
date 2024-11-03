@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: httpd
-  replicas: 2 # tells deployment to run 2 pods matching the template
+  replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
@@ -17,6 +17,13 @@ spec:
         image: httpd
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "6Mi"
+          limits:
+            cpu: "10m"
+            memory: "10Mi"
 
 ---
 apiVersion: v1
