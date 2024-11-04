@@ -8,7 +8,7 @@ $ kubectl describe pod nginx-test-686f6ff54d-gkk9h
 
 ### 해당 도커 컨테이너로 접속
 # $ kubectl exec -it <pod-name> -c <container-name> -- /bin/bash
-$ kubectl exec -it nginx-test-686f6ff54d-gkk9h -c nginx-test -- /bin/bash
+$ kubectl exec -it nginx-test-686f6ff54d-gkk9h -- /bin/bash
 
 ### 로그확인
 $ kubectl logs -f nginx-test-686f6ff54d-gkk9h
