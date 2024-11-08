@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-httpd-deployment  # values.yaml의 release
+spec:
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+      - name: httpd
+        image: "{{ .Values.httpd.image.repository }}:{{ .Values.httpd.image.tag }}"  #values.yaml 의 httpd images
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "15m"
+            memory: "10Mi"
+          limits:
+            cpu: "15m"
+            memory: "10Mi"
