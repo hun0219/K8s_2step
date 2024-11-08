@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-nginx-config
+data:
+  default.conf: |
+    upstream httpd_upstream {
+      server httpd-service:80;
+    }
+
+    server {
+      listen 80;
+      location / {
+        proxy_pass http://httpd_upstream;
+      }
+    }

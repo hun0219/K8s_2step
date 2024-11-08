@@ -15,5 +15,5 @@ nginx:
     repository: nginx
     tag: latest
   service:
-    type: Nodeport
+    type: NodePort
     port: 80
