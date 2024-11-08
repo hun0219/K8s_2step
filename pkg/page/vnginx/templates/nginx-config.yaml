@@ -5,7 +5,7 @@ metadata:
 data:
   default.conf: |
     upstream httpd_upstream {
-      server httpd-service:80;
+      server {{ .Release.Name }}-httpd-service:80;
     }
 
     server {
